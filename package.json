@@ -1,0 +1,42 @@
+{
+  "name": "json-config-ts",
+  "version": "1.0.0",
+  "description": "Easy-to-use config storage via JSON",
+  "main": "./dist/index.js",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "test": "npx mocha dist/tests",
+    "doc": "npx typedoc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/edmundpf/json-config-ts.git"
+  },
+  "keywords": [
+    "typescript",
+    "data",
+    "json",
+    "config",
+    "store",
+    "storage",
+    "encrypt",
+    "encryption"
+  ],
+  "author": "Edmund Pfeil <edmundpf@buffalo.edu>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edmundpf/json-config-ts/issues"
+  },
+  "homepage": "https://github.com/edmundpf/json-config-ts#readme",
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*",
+    "typedoc": "*",
+    "@types/node": "*",
+    "@types/chai": "*",
+    "@types/mocha": "*",
+    "typedoc-plugin-markdown": "*"
+  }
+}
