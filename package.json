@@ -38,5 +38,8 @@
     "@types/chai": "*",
     "@types/mocha": "*",
     "typedoc-plugin-markdown": "*"
+  },
+  "dependencies": {
+    "cryptr": "^6.0.1"
   }
 }

@@ -1,7 +1,15 @@
-import { StoreArgs } from './types'
 import { homedir } from 'os'
 import { resolve } from 'path'
-import crypto from 'crypto'
+import { StoreArgs } from './types'
+import { errorMessages } from './values'
+import {
+	existsSync,
+	mkdirSync,
+	writeFileSync,
+	readFileSync,
+} from 'fs'
+import Cryptr from 'cryptr'
+var crypt: any = null
 
 /**
  * Store Class
@@ -9,11 +17,14 @@ import crypto from 'crypto'
 
 export default class Store {
 
-	log: boolean
 	collection: string
 	name: string
-	encryptedFields: []
-	path: string
+	data: any
+	defaultData: any
+	encryptedFields: Array<string>
+	basePath: string
+	fullPath: string
+	private formattedData: any
 
 	/**
 	 * Constructor
@@ -21,10 +32,10 @@ export default class Store {
 
 	constructor(args: StoreArgs) {
 		const storeArgs: any = {
-			log: true,
 			collection: '',
 			name: '',
-			encryptedFields: []
+			defaultData: {},
+			encryptedFields: [],
 		}
 		for (let key in storeArgs) {
 			if (args[key] != null) {
@@ -32,26 +43,93 @@ export default class Store {
 			}
 		}
 		if (storeArgs.name == '') {
-			throw new Error('Store name must be a non-empty string')
+			throw new Error(errorMessages.nameError)
 		}
-		this.log = storeArgs.log
 		this.collection = storeArgs.collection
 		this.name = storeArgs.name
 		this.encryptedFields = storeArgs.encryptedFields
-		this.path = resolve(`${homedir()}/${this.collection}${this.collection != '' ? '/' : ''}${this.name}`)
+		this.defaultData = storeArgs.defaultData
+		this.basePath = resolve(`${homedir()}/${this.collection}`)
+		this.fullPath = resolve(`${this.basePath}${this.collection != '' ? '/' : ''}${this.name}`)
+		this.init()
+		crypt = new Cryptr(this.name)
 	}
 
 	/**
-	 * Encrypt
+	 * Init
 	 */
 
-	private encrypt(value: string) {
-		if (typeof value != 'string') {
-			throw new TypeError('Value must be a non-empty string')
+	private init() {
+		if (!existsSync(this.basePath)) {
+			mkdirSync(this.basePath)
 		}
-		const initVector = new Buffer('')
-
-
+		if (!existsSync(this.fullPath)) {
+			this.data = this.defaultData
+			this.write(this.data)
+		}
+		else {
+			this.load()
+		}
 	}
+
+	/**
+	 * Load
+	 */
+
+	private load() {
+		this.data = JSON.parse(
+			readFileSync(
+				this.fullPath,
+				'utf8'
+			)
+		)
+	}
+
+	/**
+	 * Write
+	 */
+
+	write(data: any) {
+		if (Object(data) !== data) {
+			throw new Error(errorMessages.objectError)
+		}
+		writeFileSync(
+			this.fullPath,
+			JSON.stringify(
+				data,
+				null,
+				2
+			)
+		)
+	}
+
+	/**
+	 * Get
+	 */
+
+	get(key: string) {
+		if (key == '') {
+			throw new Error(errorMessages.stringError)
+		}
+		var value: any = null
+		if (key.includes('.')) {
+			try {
+				const paths: Array<string> = key.split('.')
+				var curValue: any = this.data[paths[0]]
+				for (let index = 1; index < paths.length; index++) {
+					curValue = curValue[paths[index]]
+				}
+				value = curValue
+			}
+			catch (error) {}
+		}
+		else {
+			if (this.data[key] != null) {
+				value = this.data[key]
+			}
+		}
+		return value
+	}
+
 
 }
