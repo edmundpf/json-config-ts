@@ -1,14 +1,16 @@
 import { homedir } from 'os'
 import { resolve } from 'path'
 import { StoreArgs } from './types'
-import { errorMessages } from './values'
+import { sterilizeKeys } from './utils'
+import { storePath, errorMessages } from './values'
+import JsonFile from 'edit-json-file'
+import Cryptr from 'cryptr'
 import {
 	existsSync,
 	mkdirSync,
 	writeFileSync,
-	readFileSync,
 } from 'fs'
-import Cryptr from 'cryptr'
+var jsonFile: any = null
 var crypt: any = null
 
 /**
@@ -24,7 +26,6 @@ export default class Store {
 	encryptedFields: Array<string>
 	basePath: string
 	fullPath: string
-	private formattedData: any
 
 	/**
 	 * Constructor
@@ -48,9 +49,9 @@ export default class Store {
 		this.collection = storeArgs.collection
 		this.name = storeArgs.name
 		this.encryptedFields = storeArgs.encryptedFields
-		this.defaultData = storeArgs.defaultData
-		this.basePath = resolve(`${homedir()}/${this.collection}`)
-		this.fullPath = resolve(`${this.basePath}${this.collection != '' ? '/' : ''}${this.name}`)
+		this.defaultData = JSON.parse(JSON.stringify(storeArgs.defaultData))
+		this.basePath = resolve(`${homedir()}/${storePath}/${this.collection}`)
+		this.fullPath = resolve(`${this.basePath}/${this.collection != '' ? '/' : ''}${this.name}.json`)
 		this.init()
 		crypt = new Cryptr(this.name)
 	}
@@ -61,50 +62,41 @@ export default class Store {
 
 	private init() {
 		if (!existsSync(this.basePath)) {
-			mkdirSync(this.basePath)
+			mkdirSync(
+				this.basePath,
+				{recursive: true}
+			)
 		}
 		if (!existsSync(this.fullPath)) {
-			this.data = this.defaultData
-			this.write(this.data)
+			this.write(this.defaultData)
 		}
-		else {
-			this.load()
-		}
+		this.load()
+		return true
 	}
 
 	/**
-	 * Load
+	 * Load data
 	 */
 
 	private load() {
-		this.data = JSON.parse(
-			readFileSync(
-				this.fullPath,
-				'utf8'
-			)
-		)
-	}
-
-	/**
-	 * Write
-	 */
-
-	write(data: any) {
-		if (Object(data) !== data) {
-			throw new Error(errorMessages.objectError)
-		}
-		writeFileSync(
+		jsonFile = JsonFile(
 			this.fullPath,
-			JSON.stringify(
-				data,
-				null,
-				2
-			)
+			{
+				autosave: true
+			}
 		)
+		var data: any = jsonFile.get()
+		data = sterilizeKeys.bind(this)(
+			crypt,
+			data,
+			'decrypt'
+		)
+		this.data = data
+		return true
 	}
 
 	/**
-	 * Get
+	 * Get field
 	 */
 
 	get(key: string) {
@@ -131,5 +123,66 @@ export default class Store {
 		return value
 	}
 
+	/**
+	 * Set field
+	 */
+
+	set(key: string, val: any) {
+		if (key == '') {
+			throw new Error(errorMessages.stringError)
+		}
+		jsonFile.set(key, this.encryptedFields.includes(key) ? crypt.encrypt(val) : val)
+		this.load()
+		return true
+	}
+
+	/**
+	 * Update multiple fields
+	 */
+
+	update(data: any) {
+		if (Object(data) !== data) {
+			throw new Error(errorMessages.objectError)
+		}
+		for (let key in data) {
+			let val: any = data[key]
+			jsonFile.set(key, this.encryptedFields.includes(key) ? crypt.encrypt(val) : val)
+		}
+		this.load()
+		return true
+	}
+
+	/**
+	 * Write: overwrite file
+	 */
+
+	write(data: any) {
+		if (Object(data) !== data) {
+			throw new Error(errorMessages.objectError)
+		}
+		data = sterilizeKeys.bind(this)(
+			crypt,
+			JSON.parse(JSON.stringify(data)),
+			'encrypt'
+		)
+		writeFileSync(
+			this.fullPath,
+			JSON.stringify(
+				data,
+				null,
+				2
+			)
+		)
+		this.load()
+		return true
+	}
+
+	/**
+	 * Clear file
+	 */
+
+	clear() {
+		return this.write({})
+	}
 
 }

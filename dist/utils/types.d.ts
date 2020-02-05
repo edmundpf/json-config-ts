@@ -2,9 +2,9 @@
  * Store Args
  */
 export interface StoreArgs {
-    [index: string]: string | boolean | Array<string> | undefined;
-    log?: boolean;
+    [index: string]: string | boolean | Array<string> | any | undefined;
+    name: string;
     collection?: string;
-    name?: string;
+    defaultData?: any;
     encryptedFields?: Array<string>;
 }

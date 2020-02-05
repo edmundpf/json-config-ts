@@ -2,7 +2,7 @@
  * Store Path
  */
 
-export const storePath: string = './json_config'
+export const storePath: string = '.json_config'
 
 /**
  * Errors
