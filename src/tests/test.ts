@@ -59,7 +59,9 @@ const complexConfig: any = {
 		user: {
 			accessToken: 'token1',
 			details: {
-				SSN: '69'
+				address: '69 Drury Lane',
+				SSN: '69',
+				age: 9000,
 			}
 		}
 	}
@@ -150,18 +152,19 @@ describe('Simple Config w/ Default', () => {
 	it(testMessages.defaultEqualsDefault, defaultMatchesDefault.bind(this, simpleConfig))
 	it(testMessages.encryptedFields, encryptedFieldsMatch.bind(this, simpleConfig))
 	it(testMessages.initialGet, getMatch.bind(this, 'apples', 1))
+	it(testMessages.initialGet, getMatch.bind(this, 'outOfStock.pears', 3))
 	describe('Changes', () => {
 		before(() => {
 			this.store.set('apples', 4)
 			this.store.set('oranges', 3)
+			this.store.set('outOfStock.pears', 2)
 			this.store.update({
 				outOfStock: {
-					pears: 2,
 					bananas: 1
 				}
 			})
 		})
-		it(testMessages.changeMatch, changeMatch.bind(this,simpleConfig))
+		it(testMessages.changeMatch, changeMatch.bind(this, simpleConfig))
 	})
 	describe('Overwrite', () => {
 		before(() => {
@@ -196,6 +199,34 @@ describe('Complex Config w/ Default', () => {
 	it(testMessages.defaultEqualsDefault, defaultMatchesDefault.bind(this, complexConfig))
 	it(testMessages.encryptedFields, encryptedFieldsMatch.bind(this, complexConfig))
 	it(testMessages.initialGet, getMatch.bind(this, 'name', 'bob'))
+	it(testMessages.initialGet, getMatch.bind(this, 'user.details.age', 9000))
+	describe('Changes', () => {
+		before(() => {
+			this.store.set('name', 'sally')
+			this.store.set('password', 'password1')
+			this.store.set('user.accessToken', 'token1')
+			this.store.update({
+				user: {
+					details: {
+						SSN: '69',
+					}
+				}
+			})
+		})
+		it(testMessages.changeMatch, changeMatch.bind(this, complexConfig))
+	})
+	describe('Overwrite', () => {
+		before(() => {
+			this.store.write(complexConfig.defaultData)
+		})
+		it(testMessages.dataEqualsDefault, dataMatchesDefault.bind(this, complexConfig))
+	})
+	describe('Clear', () => {
+		before(() => {
+			this.store.clear()
+		})
+		it(testMessages.isCleared, isCleared.bind(this))
+	})
 })
 
 /**

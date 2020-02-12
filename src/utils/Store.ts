@@ -3,15 +3,14 @@ import { resolve } from 'path'
 import { StoreArgs } from './types'
 import { sterilizeKeys } from './utils'
 import { storePath, errorMessages } from './values'
+import { Base64 } from 'js-base64'
 import JsonFile from 'edit-json-file'
-import Cryptr from 'cryptr'
 import {
 	existsSync,
 	mkdirSync,
 	writeFileSync,
 } from 'fs'
 var jsonFile: any = null
-var crypt: any = null
 
 /**
  * Store Class
@@ -19,13 +18,13 @@ var crypt: any = null
 
 export default class Store {
 
-	collection: string
 	name: string
+	collection: string
+	basePath: string
+	fullPath: string
 	data: any
 	defaultData: any
 	encryptedFields: Array<string>
-	basePath: string
-	fullPath: string
 
 	/**
 	 * Constructor
@@ -53,7 +52,6 @@ export default class Store {
 		this.basePath = resolve(`${homedir()}/${storePath}/${this.collection}`)
 		this.fullPath = resolve(`${this.basePath}/${this.collection != '' ? '/' : ''}${this.name}.json`)
 		this.init()
-		crypt = new Cryptr(this.name)
 	}
 
 	/**
@@ -85,9 +83,9 @@ export default class Store {
 				autosave: true
 			}
 		)
-		var data: any = jsonFile.get()
+		var data: any = jsonFile.read()
 		data = sterilizeKeys.bind(this)(
-			crypt,
+			Base64,
 			data,
 			'decrypt'
 		)
@@ -131,7 +129,7 @@ export default class Store {
 		if (key == '') {
 			throw new Error(errorMessages.stringError)
 		}
-		jsonFile.set(key, this.encryptedFields.includes(key) ? crypt.encrypt(val) : val)
+		jsonFile.set(key, this.encryptedFields.includes(key) ? Base64.encode(val) : val)
 		this.load()
 		return true
 	}
@@ -144,10 +142,19 @@ export default class Store {
 		if (Object(data) !== data) {
 			throw new Error(errorMessages.objectError)
 		}
-		for (let key in data) {
-			let val: any = data[key]
-			jsonFile.set(key, this.encryptedFields.includes(key) ? crypt.encrypt(val) : val)
+		const curData: any = JSON.parse(JSON.stringify(this.data))
+		const recursiveUpdate: Function = (curData, data) => {
+			for (let key in data) {
+				if (Object(data[key]) !== data[key]) {
+					curData[key] = data[key]
+				}
+				else {
+					recursiveUpdate(curData[key], data[key])
+				}
+			}
 		}
+		recursiveUpdate(curData, data)
+		this.write(curData)
 		this.load()
 		return true
 	}
@@ -161,7 +168,7 @@ export default class Store {
 			throw new Error(errorMessages.objectError)
 		}
 		data = sterilizeKeys.bind(this)(
-			crypt,
+			Base64,
 			JSON.parse(JSON.stringify(data)),
 			'encrypt'
 		)

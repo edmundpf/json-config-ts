@@ -2,7 +2,7 @@
  * Sterilize Keys
  */
 
-export function sterilizeKeys(crypt: any = null, data: any = {}, mode: string = 'encrypt') {
+export function sterilizeKeys(Base64: any = null, data: any = {}, mode: string = 'encrypt') {
 	for (let key of this.encryptedFields) {
 		if (key.includes('.')) {
 			try {
@@ -13,14 +13,18 @@ export function sterilizeKeys(crypt: any = null, data: any = {}, mode: string = 
 						value = value[paths[index]]
 					}
 					else {
-						value[paths[index]] = mode == 'encrypt' ? crypt.encrypt(value[paths[index]]) : crypt.decrypt(value[paths[index]])
+						if (value[paths[index]] != null) {
+							value[paths[index]] = mode == 'encrypt' ? Base64.encode(value[paths[index]]) : Base64.decode(value[paths[index]])
+						}
 					}
 				}
 			}
 			catch (error) {}
 		}
 		else {
-			data[key] = mode == 'encrypt' ? crypt.encrypt(data[key]) : crypt.decrypt(data[key])
+			if (data[key] != null) {
+				data[key] = mode == 'encrypt' ? Base64.encode(data[key]) : Base64.decode(data[key])
+			}
 		}
 	}
 	return data

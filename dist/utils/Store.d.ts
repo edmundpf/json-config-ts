@@ -3,13 +3,13 @@ import { StoreArgs } from './types';
  * Store Class
  */
 export default class Store {
-    collection: string;
     name: string;
+    collection: string;
+    basePath: string;
+    fullPath: string;
     data: any;
     defaultData: any;
     encryptedFields: Array<string>;
-    basePath: string;
-    fullPath: string;
     /**
      * Constructor
      */

@@ -1,3 +1,7 @@
+[json-config-ts](README.md) › [Globals](globals.md)
+
+# json-config-ts
+
 # json-config-ts
 > Easy-to-use config storage via JSON with optional base-64 encryption for sensitive data
 

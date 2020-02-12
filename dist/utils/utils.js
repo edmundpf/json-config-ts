@@ -3,7 +3,7 @@
  * Sterilize Keys
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-function sterilizeKeys(crypt = null, data = {}, mode = 'encrypt') {
+function sterilizeKeys(Base64 = null, data = {}, mode = 'encrypt') {
     for (let key of this.encryptedFields) {
         if (key.includes('.')) {
             try {
@@ -14,14 +14,18 @@ function sterilizeKeys(crypt = null, data = {}, mode = 'encrypt') {
                         value = value[paths[index]];
                     }
                     else {
-                        value[paths[index]] = mode == 'encrypt' ? crypt.encrypt(value[paths[index]]) : crypt.decrypt(value[paths[index]]);
+                        if (value[paths[index]] != null) {
+                            value[paths[index]] = mode == 'encrypt' ? Base64.encode(value[paths[index]]) : Base64.decode(value[paths[index]]);
+                        }
                     }
                 }
             }
             catch (error) { }
         }
         else {
-            data[key] = mode == 'encrypt' ? crypt.encrypt(data[key]) : crypt.decrypt(data[key]);
+            if (data[key] != null) {
+                data[key] = mode == 'encrypt' ? Base64.encode(data[key]) : Base64.decode(data[key]);
+            }
         }
     }
     return data;

@@ -7,11 +7,10 @@ const os_1 = require("os");
 const path_1 = require("path");
 const utils_1 = require("./utils");
 const values_1 = require("./values");
+const js_base64_1 = require("js-base64");
 const edit_json_file_1 = __importDefault(require("edit-json-file"));
-const cryptr_1 = __importDefault(require("cryptr"));
 const fs_1 = require("fs");
 var jsonFile = null;
-var crypt = null;
 /**
  * Store Class
  */
@@ -41,7 +40,6 @@ class Store {
         this.basePath = path_1.resolve(`${os_1.homedir()}/${values_1.storePath}/${this.collection}`);
         this.fullPath = path_1.resolve(`${this.basePath}/${this.collection != '' ? '/' : ''}${this.name}.json`);
         this.init();
-        crypt = new cryptr_1.default(this.name);
     }
     /**
      * Init
@@ -63,8 +61,8 @@ class Store {
         jsonFile = edit_json_file_1.default(this.fullPath, {
             autosave: true
         });
-        var data = jsonFile.get();
-        data = utils_1.sterilizeKeys.bind(this)(crypt, data, 'decrypt');
+        var data = jsonFile.read();
+        data = utils_1.sterilizeKeys.bind(this)(js_base64_1.Base64, data, 'decrypt');
         this.data = data;
         return true;
     }
@@ -101,7 +99,7 @@ class Store {
         if (key == '') {
             throw new Error(values_1.errorMessages.stringError);
         }
-        jsonFile.set(key, this.encryptedFields.includes(key) ? crypt.encrypt(val) : val);
+        jsonFile.set(key, this.encryptedFields.includes(key) ? js_base64_1.Base64.encode(val) : val);
         this.load();
         return true;
     }
@@ -112,10 +110,19 @@ class Store {
         if (Object(data) !== data) {
             throw new Error(values_1.errorMessages.objectError);
         }
-        for (let key in data) {
-            let val = data[key];
-            jsonFile.set(key, this.encryptedFields.includes(key) ? crypt.encrypt(val) : val);
-        }
+        const curData = JSON.parse(JSON.stringify(this.data));
+        const recursiveUpdate = (curData, data) => {
+            for (let key in data) {
+                if (Object(data[key]) !== data[key]) {
+                    curData[key] = data[key];
+                }
+                else {
+                    recursiveUpdate(curData[key], data[key]);
+                }
+            }
+        };
+        recursiveUpdate(curData, data);
+        this.write(curData);
         this.load();
         return true;
     }
@@ -126,7 +133,7 @@ class Store {
         if (Object(data) !== data) {
             throw new Error(values_1.errorMessages.objectError);
         }
-        data = utils_1.sterilizeKeys.bind(this)(crypt, JSON.parse(JSON.stringify(data)), 'encrypt');
+        data = utils_1.sterilizeKeys.bind(this)(js_base64_1.Base64, JSON.parse(JSON.stringify(data)), 'encrypt');
         fs_1.writeFileSync(this.fullPath, JSON.stringify(data, null, 2));
         this.load();
         return true;
