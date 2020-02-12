@@ -9,7 +9,6 @@ const os_1 = require("os");
 const path_1 = require("path");
 const values_1 = require("../utils/values");
 const fs_1 = require("fs");
-const should = chai_1.default.should();
 const assert = chai_1.default.assert;
 const simpleConfig = {
     name: 'fruits',

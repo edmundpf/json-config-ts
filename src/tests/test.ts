@@ -10,7 +10,6 @@ import {
 	readdirSync,
 	rmdirSync,
 } from 'fs'
-const should = chai.should()
 const assert = chai.assert
 
 const simpleConfig: any = {
