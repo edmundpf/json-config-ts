@@ -1,4 +1,6 @@
 # json-config-ts
+[![Build Status](https://travis-ci.org/edmundpf/json-config-ts.svg?branch=master)](https://travis-ci.org/edmundpf/json-config-ts)
+[![npm version](https://badge.fury.io/js/json-config-ts.svg)](https://badge.fury.io/js/json-config-ts)
 > Easy-to-use config storage via JSON with optional base-64 encryption for sensitive data
 
 ## Install

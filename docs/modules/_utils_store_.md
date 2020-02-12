@@ -18,4 +18,4 @@
 
 • **jsonFile**: *any* = null
 
-*Defined in [utils/Store.ts:13](https://github.com/edmundpf/json-config-ts/blob/e425dc3/src/utils/Store.ts#L13)*
+*Defined in [utils/Store.ts:13](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/utils/Store.ts#L13)*
