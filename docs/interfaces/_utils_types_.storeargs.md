@@ -29,7 +29,7 @@ Store Args
 
 • **collection**? : *undefined | string*
 
-*Defined in [utils/types.ts:8](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/utils/types.ts#L8)*
+*Defined in [utils/types.ts:8](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/utils/types.ts#L8)*
 
 ___
 
@@ -37,7 +37,7 @@ ___
 
 • **defaultData**? : *any*
 
-*Defined in [utils/types.ts:9](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/utils/types.ts#L9)*
+*Defined in [utils/types.ts:9](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/utils/types.ts#L9)*
 
 ___
 
@@ -45,7 +45,7 @@ ___
 
 • **encryptedFields**? : *Array‹string›*
 
-*Defined in [utils/types.ts:10](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/utils/types.ts#L10)*
+*Defined in [utils/types.ts:10](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/utils/types.ts#L10)*
 
 ___
 
@@ -53,4 +53,4 @@ ___
 
 • **name**: *string*
 
-*Defined in [utils/types.ts:7](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/utils/types.ts#L7)*
+*Defined in [utils/types.ts:7](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/utils/types.ts#L7)*

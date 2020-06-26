@@ -10,7 +10,6 @@ import {
 	mkdirSync,
 	writeFileSync,
 } from 'fs'
-var jsonFile: any = null
 
 /**
  * Store Class
@@ -25,6 +24,7 @@ export default class Store {
 	data: any
 	defaultData: any
 	encryptedFields: Array<string>
+	jsonFile?: any
 
 	/**
 	 * Constructor
@@ -77,13 +77,13 @@ export default class Store {
 	 */
 
 	private load() {
-		jsonFile = JsonFile(
+		this.jsonFile = JsonFile(
 			this.fullPath,
 			{
 				autosave: true
 			}
 		)
-		var data: any = jsonFile.read()
+		var data: any = this.jsonFile.read()
 		data = sterilizeKeys.bind(this)(
 			Base64,
 			data,
@@ -129,7 +129,7 @@ export default class Store {
 		if (key == '') {
 			throw new Error(errorMessages.stringError)
 		}
-		jsonFile.set(key, this.encryptedFields.includes(key) ? Base64.encode(val) : val)
+		this.jsonFile.set(key, this.encryptedFields.includes(key) ? Base64.encode(val) : val)
 		this.load()
 		return true
 	}

@@ -14,7 +14,7 @@
 
 ▸ **sterilizeKeys**(`Base64`: any, `data`: any, `mode`: string): *any*
 
-*Defined in [utils/utils.ts:5](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/utils/utils.ts#L5)*
+*Defined in [utils/utils.ts:5](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/utils/utils.ts#L5)*
 
 Sterilize Keys
 

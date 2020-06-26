@@ -33,7 +33,7 @@
 
 • **assert**: *AssertStatic* = chai.assert
 
-*Defined in [tests/test.ts:14](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L14)*
+*Defined in [tests/test.ts:14](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L14)*
 
 ___
 
@@ -41,7 +41,7 @@ ___
 
 • **should**: *Should* = chai.should()
 
-*Defined in [tests/test.ts:13](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L13)*
+*Defined in [tests/test.ts:13](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L13)*
 
 ## Functions
 
@@ -49,7 +49,7 @@ ___
 
 ▸ **basePathExists**(): *void*
 
-*Defined in [tests/test.ts:82](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L82)*
+*Defined in [tests/test.ts:82](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L82)*
 
 **Returns:** *void*
 
@@ -59,7 +59,7 @@ ___
 
 ▸ **changeMatch**(`config`: any): *void*
 
-*Defined in [tests/test.ts:106](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L106)*
+*Defined in [tests/test.ts:106](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L106)*
 
 **Parameters:**
 
@@ -75,7 +75,7 @@ ___
 
 ▸ **dataMatchesDefault**(`config`: any): *void*
 
-*Defined in [tests/test.ts:94](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L94)*
+*Defined in [tests/test.ts:94](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L94)*
 
 **Parameters:**
 
@@ -91,7 +91,7 @@ ___
 
 ▸ **defaultMatchesDefault**(`config`: any): *void*
 
-*Defined in [tests/test.ts:98](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L98)*
+*Defined in [tests/test.ts:98](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L98)*
 
 **Parameters:**
 
@@ -107,7 +107,7 @@ ___
 
 ▸ **encryptedFieldsMatch**(`config`: any): *void*
 
-*Defined in [tests/test.ts:90](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L90)*
+*Defined in [tests/test.ts:90](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L90)*
 
 **Parameters:**
 
@@ -123,7 +123,7 @@ ___
 
 ▸ **fullPathExists**(): *void*
 
-*Defined in [tests/test.ts:86](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L86)*
+*Defined in [tests/test.ts:86](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L86)*
 
 **Returns:** *void*
 
@@ -133,7 +133,7 @@ ___
 
 ▸ **getMatch**(`key`: string, `value`: any): *void*
 
-*Defined in [tests/test.ts:102](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L102)*
+*Defined in [tests/test.ts:102](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L102)*
 
 **Parameters:**
 
@@ -150,7 +150,7 @@ ___
 
 ▸ **isCleared**(): *void*
 
-*Defined in [tests/test.ts:110](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L110)*
+*Defined in [tests/test.ts:110](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L110)*
 
 **Returns:** *void*
 
@@ -160,7 +160,7 @@ ___
 
 ▸ **recursiveDelete**(`path`: string): *void*
 
-*Defined in [tests/test.ts:114](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L114)*
+*Defined in [tests/test.ts:114](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L114)*
 
 **Parameters:**
 
@@ -176,13 +176,13 @@ Name | Type |
 
 ### ▪ **complexConfig**: *object*
 
-*Defined in [tests/test.ts:36](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L36)*
+*Defined in [tests/test.ts:36](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L36)*
 
 ###  collection
 
 • **collection**: *string* = "data"
 
-*Defined in [tests/test.ts:37](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L37)*
+*Defined in [tests/test.ts:37](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L37)*
 
 ###  encryptedFields
 
@@ -192,17 +192,17 @@ Name | Type |
 		'user.details.SSN',
 	]
 
-*Defined in [tests/test.ts:39](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L39)*
+*Defined in [tests/test.ts:39](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L39)*
 
 ###  name
 
 • **name**: *string* = "credentials"
 
-*Defined in [tests/test.ts:38](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L38)*
+*Defined in [tests/test.ts:38](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L38)*
 
 ▪ **changes**: *object*
 
-*Defined in [tests/test.ts:56](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L56)*
+*Defined in [tests/test.ts:56](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L56)*
 
 * **name**: *string* = "sally"
 
@@ -222,7 +222,7 @@ Name | Type |
 
 ▪ **defaultData**: *object*
 
-*Defined in [tests/test.ts:44](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L44)*
+*Defined in [tests/test.ts:44](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L44)*
 
 * **name**: *string* = "bob"
 
@@ -246,17 +246,17 @@ ___
 
 ### ▪ **simpleConfig**: *object*
 
-*Defined in [tests/test.ts:16](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L16)*
+*Defined in [tests/test.ts:16](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L16)*
 
 ###  name
 
 • **name**: *string* = "fruits"
 
-*Defined in [tests/test.ts:17](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L17)*
+*Defined in [tests/test.ts:17](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L17)*
 
 ▪ **changes**: *object*
 
-*Defined in [tests/test.ts:26](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L26)*
+*Defined in [tests/test.ts:26](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L26)*
 
 * **apples**: *number* = 4
 
@@ -270,7 +270,7 @@ ___
 
 ▪ **defaultData**: *object*
 
-*Defined in [tests/test.ts:18](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L18)*
+*Defined in [tests/test.ts:18](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L18)*
 
 * **apples**: *number* = 1
 
@@ -288,58 +288,58 @@ ___
 
 ### ▪ **testMessages**: *object*
 
-*Defined in [tests/test.ts:70](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L70)*
+*Defined in [tests/test.ts:70](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L70)*
 
 ###  basePath
 
 • **basePath**: *string* = "store.basePath exists"
 
-*Defined in [tests/test.ts:72](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L72)*
+*Defined in [tests/test.ts:72](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L72)*
 
 ###  changeMatch
 
 • **changeMatch**: *string* = "store.data has expected changes"
 
-*Defined in [tests/test.ts:78](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L78)*
+*Defined in [tests/test.ts:78](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L78)*
 
 ###  dataEqualsDefault
 
 • **dataEqualsDefault**: *string* = "store.data equals args.defaultData"
 
-*Defined in [tests/test.ts:74](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L74)*
+*Defined in [tests/test.ts:74](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L74)*
 
 ###  defaultEqualsDefault
 
 • **defaultEqualsDefault**: *string* = "store.defaultData equals args.defaultData"
 
-*Defined in [tests/test.ts:75](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L75)*
+*Defined in [tests/test.ts:75](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L75)*
 
 ###  encryptedFields
 
 • **encryptedFields**: *string* = "store.encryptedFields"
 
-*Defined in [tests/test.ts:76](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L76)*
+*Defined in [tests/test.ts:76](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L76)*
 
 ###  fullPath
 
 • **fullPath**: *string* = "store.fullPath exists"
 
-*Defined in [tests/test.ts:73](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L73)*
+*Defined in [tests/test.ts:73](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L73)*
 
 ###  initialGet
 
 • **initialGet**: *string* = "store.get - initial"
 
-*Defined in [tests/test.ts:77](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L77)*
+*Defined in [tests/test.ts:77](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L77)*
 
 ###  isCleared
 
 • **isCleared**: *string* = "store.data is cleared"
 
-*Defined in [tests/test.ts:79](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L79)*
+*Defined in [tests/test.ts:79](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L79)*
 
 ###  isFunction
 
 • **isFunction**: *string* = "Is function"
 
-*Defined in [tests/test.ts:71](https://github.com/edmundpf/json-config-ts/blob/7b82693/src/tests/test.ts#L71)*
+*Defined in [tests/test.ts:71](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/tests/test.ts#L71)*

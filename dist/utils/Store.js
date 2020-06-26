@@ -10,7 +10,6 @@ const values_1 = require("./values");
 const js_base64_1 = require("js-base64");
 const edit_json_file_1 = __importDefault(require("edit-json-file"));
 const fs_1 = require("fs");
-var jsonFile = null;
 /**
  * Store Class
  */
@@ -58,10 +57,10 @@ class Store {
      * Load data
      */
     load() {
-        jsonFile = edit_json_file_1.default(this.fullPath, {
+        this.jsonFile = edit_json_file_1.default(this.fullPath, {
             autosave: true
         });
-        var data = jsonFile.read();
+        var data = this.jsonFile.read();
         data = utils_1.sterilizeKeys.bind(this)(js_base64_1.Base64, data, 'decrypt');
         this.data = data;
         return true;
@@ -99,7 +98,7 @@ class Store {
         if (key == '') {
             throw new Error(values_1.errorMessages.stringError);
         }
-        jsonFile.set(key, this.encryptedFields.includes(key) ? js_base64_1.Base64.encode(val) : val);
+        this.jsonFile.set(key, this.encryptedFields.includes(key) ? js_base64_1.Base64.encode(val) : val);
         this.load();
         return true;
     }

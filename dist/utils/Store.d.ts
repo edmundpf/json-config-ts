@@ -10,6 +10,7 @@ export default class Store {
     data: any;
     defaultData: any;
     encryptedFields: Array<string>;
+    jsonFile?: any;
     /**
      * Constructor
      */
