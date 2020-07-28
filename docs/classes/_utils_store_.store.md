@@ -20,6 +20,7 @@ Store Class
 * [collection](_utils_store_.store.md#collection)
 * [data](_utils_store_.store.md#data)
 * [defaultData](_utils_store_.store.md#defaultdata)
+* [directory](_utils_store_.store.md#optional-directory)
 * [encryptedFields](_utils_store_.store.md#encryptedfields)
 * [fullPath](_utils_store_.store.md#fullpath)
 * [jsonFile](_utils_store_.store.md#optional-jsonfile)
@@ -41,7 +42,7 @@ Store Class
 
 \+ **new Store**(`args`: [StoreArgs](../interfaces/_utils_types_.storeargs.md)): *[Store](_utils_store_.store.md)*
 
-*Defined in [utils/Store.ts:27](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/utils/Store.ts#L27)*
+*Defined in [utils/Store.ts:28](https://github.com/edmundpf/json-config-ts/blob/b8d8c4f/src/utils/Store.ts#L28)*
 
 Constructor
 
@@ -59,7 +60,7 @@ Name | Type |
 
 • **basePath**: *string*
 
-*Defined in [utils/Store.ts:22](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/utils/Store.ts#L22)*
+*Defined in [utils/Store.ts:23](https://github.com/edmundpf/json-config-ts/blob/b8d8c4f/src/utils/Store.ts#L23)*
 
 ___
 
@@ -67,7 +68,7 @@ ___
 
 • **collection**: *string*
 
-*Defined in [utils/Store.ts:21](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/utils/Store.ts#L21)*
+*Defined in [utils/Store.ts:21](https://github.com/edmundpf/json-config-ts/blob/b8d8c4f/src/utils/Store.ts#L21)*
 
 ___
 
@@ -75,7 +76,7 @@ ___
 
 • **data**: *any*
 
-*Defined in [utils/Store.ts:24](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/utils/Store.ts#L24)*
+*Defined in [utils/Store.ts:25](https://github.com/edmundpf/json-config-ts/blob/b8d8c4f/src/utils/Store.ts#L25)*
 
 ___
 
@@ -83,7 +84,15 @@ ___
 
 • **defaultData**: *any*
 
-*Defined in [utils/Store.ts:25](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/utils/Store.ts#L25)*
+*Defined in [utils/Store.ts:26](https://github.com/edmundpf/json-config-ts/blob/b8d8c4f/src/utils/Store.ts#L26)*
+
+___
+
+### `Optional` directory
+
+• **directory**? : *undefined | string*
+
+*Defined in [utils/Store.ts:22](https://github.com/edmundpf/json-config-ts/blob/b8d8c4f/src/utils/Store.ts#L22)*
 
 ___
 
@@ -91,7 +100,7 @@ ___
 
 • **encryptedFields**: *Array‹string›*
 
-*Defined in [utils/Store.ts:26](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/utils/Store.ts#L26)*
+*Defined in [utils/Store.ts:27](https://github.com/edmundpf/json-config-ts/blob/b8d8c4f/src/utils/Store.ts#L27)*
 
 ___
 
@@ -99,7 +108,7 @@ ___
 
 • **fullPath**: *string*
 
-*Defined in [utils/Store.ts:23](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/utils/Store.ts#L23)*
+*Defined in [utils/Store.ts:24](https://github.com/edmundpf/json-config-ts/blob/b8d8c4f/src/utils/Store.ts#L24)*
 
 ___
 
@@ -107,7 +116,7 @@ ___
 
 • **jsonFile**? : *any*
 
-*Defined in [utils/Store.ts:27](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/utils/Store.ts#L27)*
+*Defined in [utils/Store.ts:28](https://github.com/edmundpf/json-config-ts/blob/b8d8c4f/src/utils/Store.ts#L28)*
 
 ___
 
@@ -115,7 +124,7 @@ ___
 
 • **name**: *string*
 
-*Defined in [utils/Store.ts:20](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/utils/Store.ts#L20)*
+*Defined in [utils/Store.ts:20](https://github.com/edmundpf/json-config-ts/blob/b8d8c4f/src/utils/Store.ts#L20)*
 
 ## Methods
 
@@ -123,7 +132,7 @@ ___
 
 ▸ **clear**(): *boolean*
 
-*Defined in [utils/Store.ts:191](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/utils/Store.ts#L191)*
+*Defined in [utils/Store.ts:195](https://github.com/edmundpf/json-config-ts/blob/b8d8c4f/src/utils/Store.ts#L195)*
 
 Clear file
 
@@ -135,7 +144,7 @@ ___
 
 ▸ **get**(`key`: string): *any*
 
-*Defined in [utils/Store.ts:100](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/utils/Store.ts#L100)*
+*Defined in [utils/Store.ts:104](https://github.com/edmundpf/json-config-ts/blob/b8d8c4f/src/utils/Store.ts#L104)*
 
 Get field
 
@@ -153,7 +162,7 @@ ___
 
 ▸ **init**(): *boolean*
 
-*Defined in [utils/Store.ts:61](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/utils/Store.ts#L61)*
+*Defined in [utils/Store.ts:65](https://github.com/edmundpf/json-config-ts/blob/b8d8c4f/src/utils/Store.ts#L65)*
 
 Init
 
@@ -165,7 +174,7 @@ ___
 
 ▸ **load**(): *boolean*
 
-*Defined in [utils/Store.ts:79](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/utils/Store.ts#L79)*
+*Defined in [utils/Store.ts:83](https://github.com/edmundpf/json-config-ts/blob/b8d8c4f/src/utils/Store.ts#L83)*
 
 Load data
 
@@ -177,7 +186,7 @@ ___
 
 ▸ **set**(`key`: string, `val`: any): *boolean*
 
-*Defined in [utils/Store.ts:128](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/utils/Store.ts#L128)*
+*Defined in [utils/Store.ts:132](https://github.com/edmundpf/json-config-ts/blob/b8d8c4f/src/utils/Store.ts#L132)*
 
 Set field
 
@@ -196,7 +205,7 @@ ___
 
 ▸ **update**(`data`: any): *boolean*
 
-*Defined in [utils/Store.ts:141](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/utils/Store.ts#L141)*
+*Defined in [utils/Store.ts:145](https://github.com/edmundpf/json-config-ts/blob/b8d8c4f/src/utils/Store.ts#L145)*
 
 Update multiple fields
 
@@ -214,7 +223,7 @@ ___
 
 ▸ **write**(`data`: any): *boolean*
 
-*Defined in [utils/Store.ts:166](https://github.com/edmundpf/json-config-ts/blob/49a9f6a/src/utils/Store.ts#L166)*
+*Defined in [utils/Store.ts:170](https://github.com/edmundpf/json-config-ts/blob/b8d8c4f/src/utils/Store.ts#L170)*
 
 Write: overwrite file
 
