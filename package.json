@@ -1,14 +1,14 @@
 {
   "name": "json-config-ts",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Easy-to-use config storage via JSON with optional base-64 encryption for sensitive data",
   "main": "./dist/index.js",
   "files": [
     "/dist"
   ],
   "scripts": {
-		"compile": "npx tsc",
-		"watch": "npx tsc --watch",
+    "compile": "npx tsc",
+    "watch": "npx tsc --watch",
     "test": "npx mocha dist/tests",
     "doc": "npx typedoc"
   },
