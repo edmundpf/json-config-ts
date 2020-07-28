@@ -7,6 +7,8 @@
     "/dist"
   ],
   "scripts": {
+		"compile": "npx tsc",
+		"watch": "npx tsc --watch",
     "test": "npx mocha dist/tests",
     "doc": "npx typedoc"
   },
@@ -38,7 +40,8 @@
     "chai": "*",
     "mocha": "*",
     "typedoc": "*",
-    "typedoc-plugin-markdown": "*"
+    "typedoc-plugin-markdown": "*",
+    "typescript": "^3.9.7"
   },
   "dependencies": {
     "edit-json-file": "^1.4.0",

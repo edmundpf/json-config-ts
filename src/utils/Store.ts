@@ -19,6 +19,7 @@ export default class Store {
 
 	name: string
 	collection: string
+	directory?: string
 	basePath: string
 	fullPath: string
 	data: any
@@ -34,6 +35,7 @@ export default class Store {
 		const storeArgs: any = {
 			collection: '',
 			name: '',
+			directory: undefined,
 			defaultData: {},
 			encryptedFields: [],
 		}
@@ -47,9 +49,11 @@ export default class Store {
 		}
 		this.collection = storeArgs.collection
 		this.name = storeArgs.name
+		this.directory = storeArgs.directory
 		this.encryptedFields = storeArgs.encryptedFields
 		this.defaultData = JSON.parse(JSON.stringify(storeArgs.defaultData))
-		this.basePath = resolve(`${homedir()}/${storePath}/${this.collection}`)
+		const storeDir = this.directory ? this.directory : homedir()
+		this.basePath = resolve(`${storeDir}/${storePath}/${this.collection}`)
 		this.fullPath = resolve(`${this.basePath}/${this.collection != '' ? '/' : ''}${this.name}.json`)
 		this.init()
 	}

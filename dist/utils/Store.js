@@ -21,6 +21,7 @@ class Store {
         const storeArgs = {
             collection: '',
             name: '',
+            directory: undefined,
             defaultData: {},
             encryptedFields: [],
         };
@@ -34,9 +35,11 @@ class Store {
         }
         this.collection = storeArgs.collection;
         this.name = storeArgs.name;
+        this.directory = storeArgs.directory;
         this.encryptedFields = storeArgs.encryptedFields;
         this.defaultData = JSON.parse(JSON.stringify(storeArgs.defaultData));
-        this.basePath = path_1.resolve(`${os_1.homedir()}/${values_1.storePath}/${this.collection}`);
+        const storeDir = this.directory ? this.directory : os_1.homedir();
+        this.basePath = path_1.resolve(`${storeDir}/${values_1.storePath}/${this.collection}`);
         this.fullPath = path_1.resolve(`${this.basePath}/${this.collection != '' ? '/' : ''}${this.name}.json`);
         this.init();
     }

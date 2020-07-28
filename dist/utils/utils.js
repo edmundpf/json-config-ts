@@ -3,6 +3,7 @@
  * Sterilize Keys
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.sterilizeKeys = void 0;
 function sterilizeKeys(Base64 = null, data = {}, mode = 'encrypt') {
     for (let key of this.encryptedFields) {
         if (key.includes('.')) {

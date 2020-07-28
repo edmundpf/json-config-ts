@@ -12,6 +12,7 @@ $ npm i -S json-config-ts
 ``` javascript
 const Store = require('json-config-ts')
 const store = new Store({
+	directory: '/home',
 	collection: 'foods',
 	name: 'fruits',
 	encryptedFields: ['creds.password'],
@@ -27,11 +28,13 @@ const store = new Store({
 ```
 
 ## Specs
-* Config store in ```HOMEDIR/.json_config/COLLECTION/NAME.json```
-	* Collection is optional
+* Config store in ```DIRECTORY/.json_config/COLLECTION/NAME.json```
+	* Directory argument is optional, if not provided, homedir is used
+	* Collection argument is optional, if not provided, no additional collection folder is created 
 
 ## Params
 * **String** ```name```: config name
+* **String** ```directory```: database directory (optional directory to store JSON configs)
 * **String** ```collection```: collection name (optional folder for json file)
 * **Object** ```defaultData```: default data if json file does not exist
 * **Array[string]** ```encryptedFields```: fields to be encrypted (in field.name form for nested keys)

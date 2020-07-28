@@ -3,6 +3,7 @@
  * Store Path
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.errorMessages = exports.storePath = void 0;
 exports.storePath = '.json_config';
 /**
  * Errors

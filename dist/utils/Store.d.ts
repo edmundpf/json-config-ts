@@ -5,6 +5,7 @@ import { StoreArgs } from './types';
 export default class Store {
     name: string;
     collection: string;
+    directory?: string;
     basePath: string;
     fullPath: string;
     data: any;
