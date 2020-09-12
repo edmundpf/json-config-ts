@@ -1,6 +1,6 @@
 {
   "name": "json-config-ts",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Easy-to-use config storage via JSON with optional base-64 encryption for sensitive data",
   "main": "./dist/index.js",
   "files": [
