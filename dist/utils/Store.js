@@ -60,9 +60,11 @@ class Store {
      * Load data
      */
     load() {
-        this.jsonFile = edit_json_file_1.default(this.fullPath, {
-            autosave: true
-        });
+        this.jsonFile = !this.jsonFile
+            ? edit_json_file_1.default(this.fullPath, {
+                autosave: true
+            })
+            : this.jsonFile;
         var data = this.jsonFile.read();
         data = utils_1.sterilizeKeys.bind(this)(js_base64_1.Base64, data, 'decrypt');
         this.data = data;

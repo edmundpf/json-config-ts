@@ -196,6 +196,12 @@ describe('Complex Config w/ Default', () => {
         });
         it(testMessages.changeMatch, changeMatch.bind(this, complexConfig));
     });
+    describe('Load', () => {
+        before(() => {
+            this.store.load();
+        });
+        it(testMessages.dataEqualsDefault, changeMatch.bind(this, complexConfig));
+    });
     describe('Overwrite', () => {
         before(() => {
             this.store.write(complexConfig.defaultData);

@@ -42,6 +42,8 @@ const store = new Store({
 ## Methods
 * **data**
 	* returns unencrypted object
+* **load()**
+	* loads current data from file, useful when updating config from concurrent processes
 * **get(key)**
 	* gets value from path
 * **set(key, value)**

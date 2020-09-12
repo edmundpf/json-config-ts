@@ -23,7 +23,7 @@ export default class Store {
     /**
      * Load data
      */
-    private load;
+    load(): boolean;
     /**
      * Get field
      */

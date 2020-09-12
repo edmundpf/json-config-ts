@@ -80,13 +80,15 @@ export default class Store {
 	 * Load data
 	 */
 
-	private load() {
-		this.jsonFile = JsonFile(
-			this.fullPath,
-			{
-				autosave: true
-			}
-		)
+	load() {
+		this.jsonFile = !this.jsonFile
+			? JsonFile(
+				this.fullPath,
+				{
+					autosave: true
+				}
+			)
+			: this.jsonFile
 		var data: any = this.jsonFile.read()
 		data = sterilizeKeys.bind(this)(
 			Base64,
