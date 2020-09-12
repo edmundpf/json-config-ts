@@ -18,7 +18,7 @@
 
 • **storePath**: *string* = ".json_config"
 
-*Defined in [utils/values.ts:5](https://github.com/edmundpf/json-config-ts/blob/dccc405/src/utils/values.ts#L5)*
+*Defined in [utils/values.ts:5](https://github.com/edmundpf/json-config-ts/blob/01d0d58/src/utils/values.ts#L5)*
 
 Store Path
 
@@ -28,7 +28,7 @@ Store Path
 
 ### ▪ **errorMessages**: *object*
 
-*Defined in [utils/values.ts:11](https://github.com/edmundpf/json-config-ts/blob/dccc405/src/utils/values.ts#L11)*
+*Defined in [utils/values.ts:11](https://github.com/edmundpf/json-config-ts/blob/01d0d58/src/utils/values.ts#L11)*
 
 Errors
 
@@ -36,16 +36,16 @@ Errors
 
 • **nameError**: *string* = "Argument "name" must be a non-empty string"
 
-*Defined in [utils/values.ts:12](https://github.com/edmundpf/json-config-ts/blob/dccc405/src/utils/values.ts#L12)*
+*Defined in [utils/values.ts:12](https://github.com/edmundpf/json-config-ts/blob/01d0d58/src/utils/values.ts#L12)*
 
 ###  objectError
 
 • **objectError**: *string* = "Argument must be an object"
 
-*Defined in [utils/values.ts:13](https://github.com/edmundpf/json-config-ts/blob/dccc405/src/utils/values.ts#L13)*
+*Defined in [utils/values.ts:13](https://github.com/edmundpf/json-config-ts/blob/01d0d58/src/utils/values.ts#L13)*
 
 ###  stringError
 
 • **stringError**: *string* = "Argument must be a non-empty string"
 
-*Defined in [utils/values.ts:14](https://github.com/edmundpf/json-config-ts/blob/dccc405/src/utils/values.ts#L14)*
+*Defined in [utils/values.ts:14](https://github.com/edmundpf/json-config-ts/blob/01d0d58/src/utils/values.ts#L14)*
